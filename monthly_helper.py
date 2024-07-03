@@ -135,15 +135,12 @@ def open_jira_filter(start_date, end_date):
 
 def main():
     """
-    Simple helper script to create a new monthly report. Opens Github repos to
-    closed PRs where you are the other and the PR was closed the previous month.
+    Simple helper script to make creating a monthly report easier. Opens Github repos
+    to closed PRs where you are the other and the PR was closed the previous month.
 
     The default assumption is you are running this script to create a monthly
     report for the previous month. So if you are running this on June 6th, it
     will help find relevant information from May 1st to May 31st.
-
-    Accepted arguments:
-    - Month as a 1-12 integer
     """
 
     current_month = datetime.now().month
@@ -156,7 +153,7 @@ def main():
         "-m",
         "--month",
         type=int,
-        help="The month for the report",
+        help="The month for the report.",
         default=current_month - 1,
         choices=range(1, 13),
     )
@@ -164,32 +161,32 @@ def main():
         "-b",
         "--buffer",
         type=int,
-        help="Number of days to look outside of prior month",
+        help="Number of days to look outside of prior month.",
         default=0,
     )
     parser.add_argument(
         "-md",
         "--use-merged-date",
         action="store_true",
-        help="Use the merged date instead of the created date for PR filters",
+        help="Use the merged date instead of the created date for PR filters.",
         default=False,
     )
     parser.add_argument(
         "--include-reviewed",
         action="store_true",
-        help="Also will open Github PRs filtered to show those you reviewed in the previous month",
+        help="Also will open Github PRs filtered to show those you reviewed in the previous month.",
         default=False,
     )
     parser.add_argument(
         "--skip-jira",
         action="store_true",
-        help="Don't open the Jira filter",
+        help="Don't open the Jira issues page.",
         default=False,
     )
     parser.add_argument(
         "--skip-github",
         action="store_true",
-        help="Don't open the Github PR pages",
+        help="Don't open the Github PR pages.",
         default=False,
     )
 
