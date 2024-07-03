@@ -159,7 +159,7 @@ def main():
     )
     parser.add_argument(
         "-b",
-        "--buffer",
+        "--day-buffer",
         type=int,
         help="Number of days to look outside of prior month.",
         default=0,
