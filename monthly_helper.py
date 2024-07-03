@@ -210,7 +210,7 @@ def main():
 
     print(f"Opening monthly report resources for {target_month.strftime('%B %Y')}...")
 
-    if not args.skip_github:
+    if github_org and github_username and not args.skip_github:
         open_github_pr_pages(
             first_day_of_month,
             last_day_of_month,
@@ -218,7 +218,7 @@ def main():
             args.include_reviewed,
         )
 
-    if not args.skip_jira:
+    if jira_org and not args.skip_jira:
         open_jira_filter(first_day_of_month, last_day_of_month)
 
 
