@@ -198,7 +198,7 @@ def main():
         days=1
     )
 
-    if args.buffer:
+    if args.day_buffer:
         first_day_of_month -= timedelta(days=args.buffer)
         last_day_of_month += timedelta(days=args.buffer)
 
