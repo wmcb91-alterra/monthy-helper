@@ -1,7 +1,7 @@
 # Monthly Report Helper
 
 Simple helper script to make creating a monthly report easier. Opens Github repos
-to closed PRs where you are the other and the PR was closed the previous month.
+to closed PRs where you are the author and the PR was closed the previous month.
 
 The default assumption is you are running this script to create a monthly report for the
 previous month. So if you are running this on June 6th, it will help find relevant
