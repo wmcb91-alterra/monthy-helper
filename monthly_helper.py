@@ -99,19 +99,21 @@ def open_github_pr_pages(
         print("\n".join(github_repos))
 
     date_filter = "created"
-    author_filter = "author"
+    author_filter = f"author:{github_username}"
 
     if use_merged_date:
         date_filter = "merged"
 
     for repo in github_repos:
         repo_url = f"https://github.com/{github_org}/{repo}/pulls"
-        query = f"is:pr {date_filter}:{start_date}..{end_date} {author_filter}:{github_username}"
+        query = f"is:pr {date_filter}:{start_date}..{end_date} {author_filter}"
 
         os.system(f"open '{repo_url}?q={query}'")
 
         if include_reviewed:
-            query = query.replace(author_filter, "reviewed-by")
+            query = query.replace(
+                author_filter, f"-{author_filter} reviewed-by:{github_username}"
+            )
             os.system(f"open '{repo_url}?q={query}'")
 
 
