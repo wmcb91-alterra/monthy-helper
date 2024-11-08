@@ -199,8 +199,8 @@ def main():
     )
 
     if args.day_buffer:
-        first_day_of_month -= timedelta(days=args.buffer)
-        last_day_of_month += timedelta(days=args.buffer)
+        first_day_of_month -= timedelta(days=args.day_buffer)
+        last_day_of_month += timedelta(days=args.day_buffer)
 
     first_day_of_month = first_day_of_month.strftime("%Y-%m-%d")
     last_day_of_month = last_day_of_month.strftime("%Y-%m-%d")
