@@ -156,7 +156,7 @@ def main():
         "--month",
         type=int,
         help="The month for the report.",
-        default=current_month - 1,
+        default=current_month - 1 or 12,
         choices=range(1, 13),
     )
     parser.add_argument(
@@ -195,10 +195,19 @@ def main():
     args = parser.parse_args()
 
     target_month = datetime.now().replace(month=args.month)
+    if args.month == 12:
+        target_month = target_month.replace(year=target_month.year - 1)
+
     first_day_of_month = target_month.replace(day=1)
-    last_day_of_month = first_day_of_month.replace(month=args.month + 1) - timedelta(
-        days=1
-    )
+
+    if args.month == 12:
+        last_day_of_month = first_day_of_month.replace(
+            year=target_month.year + 1, month=1
+        ) - timedelta(days=1)
+    else:
+        last_day_of_month = first_day_of_month.replace(
+            month=args.month + 1
+        ) - timedelta(days=1)
 
     if args.day_buffer:
         first_day_of_month -= timedelta(days=args.day_buffer)
