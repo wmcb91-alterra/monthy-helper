@@ -195,7 +195,9 @@ def main():
     args = parser.parse_args()
 
     target_month = datetime.now().replace(month=args.month)
-    if args.month == 12:
+
+    # If the target month is greater than the current month, use the previous year
+    if args.month > current_month:
         target_month = target_month.replace(year=target_month.year - 1)
 
     first_day_of_month = target_month.replace(day=1)
