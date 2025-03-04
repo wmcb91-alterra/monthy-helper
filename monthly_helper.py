@@ -63,7 +63,7 @@ finally:
 
 
 jira_filter_jql_template = """
-project = "RDC"
+(project = "RDC" OR project = "CMS Transformation")
 AND 
 (
     ("developer[user picker (single user)]" = currentUser() OR assignee = currentUser())
